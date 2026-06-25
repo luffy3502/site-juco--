@@ -1,900 +1,416 @@
-:root {
-  --red: #b70d23;
-  --red-strong: #d3122c;
-  --red-dark: #780817;
-  --ink: #09090b;
-  --charcoal: #151518;
-  --graphite: #24242a;
-  --muted: #6d7280;
-  --line: rgba(255, 255, 255, 0.13);
-  --paper: #f6f3ef;
-  --white: #ffffff;
-  --steel: #dce7ea;
-  --shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
-  --radius: 8px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: var(--ink);
-  color: var(--white);
-  line-height: 1.6;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.container {
-  width: min(1160px, calc(100% - 40px));
-  margin-inline: auto;
-}
-
-.site-header {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  z-index: 50;
-  width: min(1180px, calc(100% - 32px));
-  height: 92px;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: 260px 1fr auto;
-  align-items: center;
-  gap: 22px;
-  padding: 8px 12px 8px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius);
-  background: rgba(8, 8, 10, 0.68);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px);
-  transition: 0.25s ease;
-}
-
-.site-header.is-scrolled {
-  top: 8px;
-  background: rgba(8, 8, 10, 0.9);
-}
-
-.brand img {
-  width: 232px;
-  height: 72px;
-  border: 0;
-  object-fit: cover;
-  object-position: center;
-}
-
-.main-nav {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.main-nav a {
-  position: relative;
-  transition: color 0.2s ease;
-}
-
-.main-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 100%;
-  height: 2px;
-  transform: scaleX(0);
-  transform-origin: right;
-  background: var(--red-strong);
-  transition: transform 0.2s ease;
-}
-
-.main-nav a:hover {
-  color: var(--white);
-}
-
-.main-nav a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.mobile-nav-cta {
-  display: none;
-}
-
-.header-cta,
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  border-radius: var(--radius);
-  font-weight: 800;
-  letter-spacing: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.header-cta {
-  padding: 0 18px;
-  background: var(--red);
-  color: var(--white);
-  box-shadow: 0 12px 32px rgba(183, 13, 35, 0.35);
-}
-
-.header-cta:hover,
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.nav-toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--white);
-}
-
-.hero {
-  position: relative;
-  min-height: 92vh;
-  overflow: hidden;
-  display: grid;
-  align-items: center;
-  padding: 130px 0 64px;
-}
-
-.hero-bg,
-.cta-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url("assets/hero-tech.png");
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.02);
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(5, 5, 7, 0.94) 0%, rgba(9, 9, 11, 0.86) 38%, rgba(9, 9, 11, 0.5) 70%, rgba(183, 13, 35, 0.28) 100%),
-    radial-gradient(circle at 20% 80%, rgba(183, 13, 35, 0.46), transparent 34%);
-}
-
-.hero-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 48px;
-  align-items: end;
-}
-
-.hero-content {
-  max-width: 760px;
-}
-
-.hero-logo {
-  width: min(360px, 72vw);
-  margin-bottom: 28px;
-  filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.38));
-}
-
-.eyebrow {
-  margin: 0 0 14px;
-  color: var(--steel);
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-p {
-  overflow-wrap: anywhere;
-}
-
-h1 {
-  margin: 0;
-  max-width: 900px;
-  font-size: clamp(2.35rem, 6vw, 5.6rem);
-  line-height: 0.95;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.hero-subtitle {
-  max-width: 700px;
-  margin: 26px 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(1rem, 2vw, 1.22rem);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 34px;
-}
-
-.btn {
-  min-width: 190px;
-  padding: 0 20px;
-  border: 1px solid transparent;
-}
-
-.btn svg,
-.header-cta svg,
-.nav-toggle svg {
-  width: 19px;
-  height: 19px;
-}
-
-.btn-primary {
-  background: var(--red);
-  color: var(--white);
-  box-shadow: 0 18px 46px rgba(183, 13, 35, 0.4);
-}
-
-.btn-secondary {
-  border-color: rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.btn-large {
-  min-height: 56px;
-  padding-inline: 28px;
-  text-transform: uppercase;
-}
-
-.hero-panel {
-  position: relative;
-  padding: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius);
-  background: rgba(10, 10, 12, 0.72);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
-}
-
-.signal-line {
-  height: 4px;
-  margin-bottom: 18px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--red), var(--steel), transparent);
-}
-
-.metric {
-  display: grid;
-  gap: 2px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-}
-
-.metric:last-child {
-  border-bottom: 0;
-}
-
-.metric strong {
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-.metric span:last-child {
-  color: rgba(255, 255, 255, 0.68);
-  font-weight: 700;
-}
-
-.intro-strip {
-  position: relative;
-  z-index: 2;
-  margin-top: -28px;
-}
-
-.strip-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow);
-}
-
-.strip-grid span {
-  min-height: 76px;
-  display: grid;
-  place-items: center;
-  padding: 14px;
-  background: #101013;
-  color: rgba(255, 255, 255, 0.78);
-  text-align: center;
-  font-weight: 800;
-}
-
-.section {
-  padding: 108px 0;
-}
-
-.about,
-.benefits,
-.testimonials {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.services,
-.process {
-  background: #0c0c0f;
-}
-
-.solutions,
-.portfolio {
-  background: #151518;
-}
-
-.two-column {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.section-heading {
-  max-width: 760px;
-  margin-bottom: 42px;
-}
-
-.section-heading h2,
-.section-copy h2,
-.final-cta h2 {
-  margin: 0;
-  font-size: clamp(2rem, 4vw, 3.8rem);
-  line-height: 1.04;
-  font-weight: 900;
-}
-
-.section-copy p:not(.eyebrow),
-.section-heading + p {
-  color: var(--muted);
-}
-
-.about .eyebrow,
-.benefits .eyebrow,
-.testimonials .eyebrow {
-  color: var(--red);
-}
-
-.feature-grid,
-.cards-grid,
-.solution-grid,
-.testimonial-grid,
-.portfolio-grid {
-  display: grid;
-  gap: 18px;
-}
-
-.feature-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.feature-grid article,
-.service-card,
-.solution-card,
-.testimonial,
-.mockup {
-  border-radius: var(--radius);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-grid article {
-  min-height: 118px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 20px;
-  border: 1px solid rgba(9, 9, 11, 0.09);
-  background: var(--white);
-  box-shadow: 0 18px 38px rgba(20, 20, 24, 0.07);
-  font-weight: 900;
-}
-
-.feature-grid svg,
-.benefit-list svg {
-  width: 24px;
-  min-width: 24px;
-  color: var(--red);
-}
-
-.cards-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.service-card,
-.solution-card {
-  min-height: 248px;
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-}
-
-.service-card:hover,
-.solution-card:hover,
-.mockup:hover,
-.testimonial:hover {
-  transform: translateY(-6px);
-  border-color: rgba(211, 18, 44, 0.45);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
-}
-
-.service-card svg,
-.solution-card svg {
-  width: 34px;
-  height: 34px;
-  margin-bottom: 24px;
-  color: var(--red-strong);
-}
-
-.service-card h3,
-.solution-card h3,
-.timeline-step h3 {
-  margin: 0 0 12px;
-  font-size: 1.18rem;
-}
-
-.service-card p,
-.solution-card p,
-.timeline-step p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.68);
-}
-
-.solution-grid {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.solution-card {
-  min-height: 230px;
-}
-
-.timeline {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 38px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--red), rgba(255, 255, 255, 0.18), var(--red));
-}
-
-.timeline-step {
-  position: relative;
-  padding: 0 6px;
-}
-
-.timeline-step span {
-  position: relative;
-  z-index: 1;
-  width: 76px;
-  height: 76px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 18px 36px rgba(183, 13, 35, 0.28);
-  font-weight: 900;
-}
-
-.benefit-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.benefit-list span {
-  min-height: 68px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  border: 1px solid rgba(9, 9, 11, 0.08);
-  border-radius: var(--radius);
-  background: var(--white);
-  box-shadow: 0 14px 28px rgba(20, 20, 24, 0.06);
-  font-weight: 900;
-}
-
-.portfolio-grid {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.mockup {
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0d0d10;
-}
-
-.mockup-bar {
-  display: flex;
-  gap: 7px;
-  padding: 13px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.mockup-bar span {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.32);
-}
-
-.mockup-screen {
-  min-height: 250px;
-  display: grid;
-  place-items: center;
-  gap: 14px;
-  padding: 24px;
-  text-align: center;
-  background:
-    linear-gradient(140deg, rgba(183, 13, 35, 0.34), transparent 42%),
-    radial-gradient(circle at center, rgba(220, 231, 234, 0.16), transparent 34%);
-}
-
-.mockup-screen img {
-  width: 150px;
-}
-
-.mockup-screen svg {
-  width: 62px;
-  height: 62px;
-  color: var(--red-strong);
-}
-
-.mockup-screen strong {
-  font-size: 1.05rem;
-}
-
-.testimonial-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.testimonial {
-  padding: 28px;
-  border: 1px solid rgba(9, 9, 11, 0.08);
-  background: var(--white);
-  box-shadow: 0 18px 38px rgba(20, 20, 24, 0.07);
-}
-
-.testimonial img {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 22px;
-}
-
-.testimonial p {
-  margin: 0 0 22px;
-  color: #33343a;
-  font-size: 1.02rem;
-}
-
-.testimonial strong,
-.testimonial span {
-  display: block;
-}
-
-.testimonial span {
-  color: var(--red);
-  font-weight: 800;
-}
-
-.final-cta {
-  position: relative;
-  overflow: hidden;
-  padding: 120px 0;
-  text-align: center;
-}
-
-.final-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(9, 9, 11, 0.86), rgba(9, 9, 11, 0.94)), rgba(183, 13, 35, 0.18);
-  z-index: 1;
-}
-
-.final-cta .container {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-}
-
-.final-cta img {
-  width: 250px;
-  margin: 0 auto 28px;
-}
-
-.final-cta h2 {
-  text-transform: uppercase;
-}
-
-.final-cta p {
-  max-width: 680px;
-  margin: 20px auto 32px;
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.site-footer {
-  padding: 64px 0 0;
-  background: #060607;
-  color: rgba(255, 255, 255, 0.74);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 0.8fr 1fr 0.8fr;
-  gap: 34px;
-}
-
-.site-footer img {
-  width: 170px;
-  margin-bottom: 18px;
-}
-
-.site-footer h3 {
-  margin: 0 0 18px;
-  color: var(--white);
-  font-size: 1rem;
-}
-
-.site-footer a {
-  display: block;
-  margin-bottom: 10px;
-  transition: color 0.2s ease;
-}
-
-.site-footer a:hover {
-  color: var(--white);
-}
-
-.footer-bottom {
-  margin-top: 48px;
-  padding: 22px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 1060px) {
-  .site-header {
-    grid-template-columns: 1fr auto;
-    height: 80px;
-    padding: 8px 10px 8px 12px;
-  }
-
-  .brand img {
-    width: 176px;
-    height: 56px;
-  }
-
-  .nav-toggle {
-    display: grid;
-    place-items: center;
-    justify-self: end;
-  }
-
-  .main-nav {
-    position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
-    right: 0;
-    display: none;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: var(--radius);
-    background:
-      linear-gradient(180deg, rgba(23, 23, 27, 0.98), rgba(8, 8, 10, 0.98)),
-      radial-gradient(circle at 100% 0%, rgba(183, 13, 35, 0.24), transparent 38%);
-    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42);
-    backdrop-filter: blur(18px);
-  }
-
-  .main-nav.is-open {
-    display: grid;
-  }
-
-  .main-nav a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 48px;
-    padding: 0 14px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.055);
-    color: rgba(255, 255, 255, 0.88);
-    font-weight: 800;
-  }
-
-  .main-nav a::after {
-    position: static;
-    width: 7px;
-    height: 7px;
-    transform: none;
-    border-radius: 50%;
-    background: rgba(211, 18, 44, 0.9);
-  }
-
-  .main-nav a:hover {
-    border-color: rgba(211, 18, 44, 0.42);
-    background: rgba(183, 13, 35, 0.18);
-  }
-
-  .main-nav a:hover::after {
-    transform: none;
-  }
-
-  .header-cta {
-    display: none;
-  }
-
-  .mobile-nav-cta {
-    display: flex;
-    justify-content: center;
-    margin-top: 4px;
-    background: var(--red) !important;
-    border-color: rgba(255, 255, 255, 0.16) !important;
-    color: var(--white) !important;
-    box-shadow: 0 16px 34px rgba(183, 13, 35, 0.32);
-  }
-
-  .mobile-nav-cta::after {
-    display: none;
-  }
-
-  .hero-grid,
-  .two-column {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-panel {
-    max-width: 620px;
-  }
-
-  .cards-grid,
-  .testimonial-grid,
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .solution-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .timeline {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .timeline::before {
-    display: none;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  .container {
-    width: min(100% - 28px, 1160px);
-  }
-
-  .site-header {
-    top: 10px;
-    width: calc(100% - 20px);
-    height: 72px;
-  }
-
-  .brand img {
-    width: 150px;
-    height: 48px;
-  }
-
-  .hero {
-    min-height: 92vh;
-    padding-top: 112px;
-  }
-
-  .hero-overlay {
-    background:
-      linear-gradient(180deg, rgba(5, 5, 7, 0.95) 0%, rgba(9, 9, 11, 0.82) 60%, rgba(183, 13, 35, 0.28) 100%),
-      radial-gradient(circle at 20% 70%, rgba(183, 13, 35, 0.38), transparent 38%);
-  }
-
-  .hero-actions,
-  .btn {
-    width: 100%;
-  }
-
-  .strip-grid,
-  .feature-grid,
-  .cards-grid,
-  .solution-grid,
-  .benefit-list,
-  .portfolio-grid,
-  .testimonial-grid,
-  .timeline,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 78px 0;
-  }
-
-  .hero-panel {
-    padding: 20px;
-  }
-
-  .metric strong {
-    font-size: 2rem;
-  }
-
-  .service-card,
-  .solution-card {
-    min-height: 0;
-  }
-
-  .mockup-screen {
-    min-height: 210px;
-  }
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juco Consultoria: marketing digital, automação de WhatsApp, inteligência artificial e sites profissionais para empresas que desejam crescer.">
+  <meta name="theme-color" content="#b50d22">
+  <meta property="og:title" content="Juco Consultoria">
+  <meta property="og:description" content="Marketing, Automação e Inteligência Artificial para Empresas">
+  <meta property="og:image" content="assets/juco-logo.png">
+  <title>Juco Consultoria | Marketing, Automação e IA</title>
+  <link rel="icon" type="image/png" href="assets/juco-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260625-3">
+  <style>
+    .site-header {
+      height: 92px !important;
+      max-height: 92px !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      align-items: center !important;
+    }
+
+    .site-header .brand {
+      display: flex !important;
+      align-items: center !important;
+      width: 232px !important;
+      height: 72px !important;
+      overflow: hidden !important;
+    }
+
+    .site-header .brand img {
+      width: 232px !important;
+      height: 72px !important;
+      max-width: none !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 1060px) {
+      .site-header {
+        height: 80px !important;
+        max-height: 80px !important;
+      }
+
+      .site-header .brand {
+        width: 176px !important;
+        height: 56px !important;
+      }
+
+      .site-header .brand img {
+        width: 176px !important;
+        height: 56px !important;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-header {
+        height: 72px !important;
+        max-height: 72px !important;
+      }
+
+      .site-header .brand {
+        width: 150px !important;
+        height: 48px !important;
+      }
+
+      .site-header .brand img {
+        width: 150px !important;
+        height: 48px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="Juco Consultoria - início">
+      <img src="assets/juco-logo.png" alt="Juco Consultoria" data-brand-logo>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>
+      <i data-lucide="menu"></i>
+    </button>
+
+    <nav class="main-nav" data-nav>
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#contato">Contato</a>
+      <a class="mobile-nav-cta" href="https://wa.me/5575998828297?text=Ol%C3%A1!%20Vi%20a%20JUCO%20Consultoria%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20sites,%20automa%C3%A7%C3%B5es%20e%20solu%C3%A7%C3%B5es%20para%20empresas" target="_blank" rel="noopener">Solicitar Orçamento</a>
+    </nav>
+
+    <a class="header-cta" href="https://wa.me/5575998828297?text=Ol%C3%A1!%20Vi%20a%20JUCO%20Consultoria%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20sites,%20automa%C3%A7%C3%B5es%20e%20solu%C3%A7%C3%B5es%20para%20empresas" target="_blank" rel="noopener">
+      Solicitar Orçamento
+    </a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <img class="hero-logo" src="assets/juco-logo.png" alt="Juco Consultoria">
+          <p class="eyebrow">Marketing, Automação e Inteligência Artificial para Empresas</p>
+          <h1>Transformamos empresas com tecnologia e resultados</h1>
+          <p class="hero-subtitle">Marketing Digital, Automação de WhatsApp, Inteligência Artificial e Sites Profissionais para empresas que desejam crescer.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5575998828297?text=Ol%C3%A1!%20Vi%20a%20JUCO%20Consultoria%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20sites,%20automa%C3%A7%C3%B5es%20e%20solu%C3%A7%C3%B5es%20para%20empresas" target="_blank" rel="noopener">
+              <i data-lucide="message-circle"></i>
+              Falar no WhatsApp
+            </a>
+            <a class="btn btn-secondary" href="#servicos">
+              <i data-lucide="arrow-down-right"></i>
+              Conhecer Serviços
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal" aria-label="Indicadores da Juco Consultoria">
+          <div class="signal-line"></div>
+          <div class="metric">
+            <strong><span data-count="75">0</span>+</strong>
+            <span>Empresas Atendidas</span>
+          </div>
+          <div class="metric">
+            <strong><span data-count="120">0</span>+</strong>
+            <span>Projetos Entregues</span>
+          </div>
+          <div class="metric">
+            <strong><span data-count="95">0</span>+</strong>
+            <span>Automações Implantadas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-strip">
+      <div class="container strip-grid">
+        <span>IA aplicada ao atendimento</span>
+        <span>WhatsApp automatizado</span>
+        <span>Sites de alta conversão</span>
+        <span>Processos integrados</span>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container two-column">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Quem Somos</p>
+          <h2>Consultoria para empresas que querem operar melhor, vender mais e escalar com inteligência.</h2>
+          <p>A Juco Consultoria nasceu para ajudar empresas a vender mais, organizar processos e melhorar o relacionamento com seus clientes através da tecnologia.</p>
+          <p>Trabalhamos com automação empresarial, inteligência artificial, marketing digital e desenvolvimento web para criar soluções que geram resultados reais.</p>
+        </div>
+        <div class="feature-grid reveal">
+          <article><i data-lucide="heart-handshake"></i><span>Atendimento Humanizado</span></article>
+          <article><i data-lucide="settings-2"></i><span>Soluções Personalizadas</span></article>
+          <article><i data-lucide="target"></i><span>Foco em Resultados</span></article>
+          <article><i data-lucide="cpu"></i><span>Tecnologia Moderna</span></article>
+          <article><i data-lucide="rocket"></i><span>Implementação Rápida</span></article>
+          <article><i data-lucide="headphones"></i><span>Suporte Especializado</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Serviços</p>
+          <h2>Estratégia, automação e presença digital em uma operação integrada.</h2>
+        </div>
+        <div class="cards-grid">
+          <article class="service-card reveal">
+            <i data-lucide="message-square-text"></i>
+            <h3>Automação de WhatsApp</h3>
+            <p>Automatização de atendimento, pedidos, suporte e processos empresariais.</p>
+          </article>
+          <article class="service-card reveal">
+            <i data-lucide="monitor-smartphone"></i>
+            <h3>Criação de Sites</h3>
+            <p>Sites modernos, rápidos, profissionais e responsivos.</p>
+          </article>
+          <article class="service-card reveal">
+            <i data-lucide="bot"></i>
+            <h3>Assistentes de Inteligência Artificial</h3>
+            <p>Atendentes virtuais inteligentes para responder clientes 24 horas por dia.</p>
+          </article>
+          <article class="service-card reveal">
+            <i data-lucide="megaphone"></i>
+            <h3>Marketing Digital</h3>
+            <p>Estratégias para atrair clientes e aumentar vendas.</p>
+          </article>
+          <article class="service-card reveal">
+            <i data-lucide="instagram"></i>
+            <h3>Gestão de Redes Sociais</h3>
+            <p>Conteúdo profissional para fortalecer a presença digital da empresa.</p>
+          </article>
+          <article class="service-card reveal">
+            <i data-lucide="workflow"></i>
+            <h3>Integrações e Automações</h3>
+            <p>Integrações entre WhatsApp, Google Planilhas, CRM e sistemas internos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section solutions" id="solucoes">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Soluções para Empresas</p>
+          <h2>Aplicações práticas para negócios que precisam ganhar velocidade.</h2>
+        </div>
+        <div class="solution-grid">
+          <article class="solution-card reveal">
+            <i data-lucide="pill"></i>
+            <h3>Farmácias</h3>
+            <p>Atendimento automático, pedidos pelo WhatsApp e controle de entregas.</p>
+          </article>
+          <article class="solution-card reveal">
+            <i data-lucide="stethoscope"></i>
+            <h3>Clínicas</h3>
+            <p>Agendamentos automáticos e confirmações de consultas.</p>
+          </article>
+          <article class="solution-card reveal">
+            <i data-lucide="shopping-basket"></i>
+            <h3>Supermercados</h3>
+            <p>Catálogo digital, pedidos automatizados e atendimento organizado.</p>
+          </article>
+          <article class="solution-card reveal">
+            <i data-lucide="landmark"></i>
+            <h3>Câmaras e Prefeituras</h3>
+            <p>Atendimento ao cidadão e comunicação automatizada.</p>
+          </article>
+          <article class="solution-card reveal">
+            <i data-lucide="store"></i>
+            <h3>Pequenas Empresas</h3>
+            <p>Captação de clientes e automação de vendas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Como Funciona</p>
+          <h2>Da análise à melhoria contínua, com implantação objetiva.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-step reveal">
+            <span>01</span>
+            <h3>Análise do Negócio</h3>
+            <p>Mapeamos objetivos, gargalos e oportunidades de crescimento.</p>
+          </article>
+          <article class="timeline-step reveal">
+            <span>02</span>
+            <h3>Planejamento da Solução</h3>
+            <p>Desenhamos a estratégia, os fluxos e as integrações necessárias.</p>
+          </article>
+          <article class="timeline-step reveal">
+            <span>03</span>
+            <h3>Implementação</h3>
+            <p>Configuramos ferramentas, automações, páginas e assistentes.</p>
+          </article>
+          <article class="timeline-step reveal">
+            <span>04</span>
+            <h3>Acompanhamento e Otimização</h3>
+            <p>Monitoramos performance e ajustamos a operação para evoluir.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="diferenciais">
+      <div class="container two-column">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Benefícios</p>
+          <h2>Por que investir em tecnologia?</h2>
+          <p>Empresas modernas reduzem retrabalho, respondem mais rápido e criam experiências comerciais mais consistentes.</p>
+        </div>
+        <div class="benefit-list reveal">
+          <span><i data-lucide="trending-up"></i>Mais Vendas</span>
+          <span><i data-lucide="clock-3"></i>Atendimento 24 Horas</span>
+          <span><i data-lucide="hand"></i>Menos Trabalho Manual</span>
+          <span><i data-lucide="layout-dashboard"></i>Mais Organização</span>
+          <span><i data-lucide="badge-check"></i>Mais Profissionalismo</span>
+          <span><i data-lucide="line-chart"></i>Crescimento Escalável</span>
+          <span><i data-lucide="timer"></i>Economia de Tempo</span>
+          <span><i data-lucide="smile"></i>Melhor Experiência para Clientes</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portfolio">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Portfólio</p>
+          <h2>Projetos criados para parecer profissionais e funcionar como operação.</h2>
+        </div>
+        <div class="portfolio-grid">
+          <article class="mockup reveal">
+            <div class="mockup-bar"><span></span><span></span><span></span></div>
+            <div class="mockup-screen site-preview">
+              <i data-lucide="panel-top"></i>
+              <strong>Sites Profissionais</strong>
+            </div>
+          </article>
+          <article class="mockup reveal">
+            <div class="mockup-bar"><span></span><span></span><span></span></div>
+            <div class="mockup-screen flow-preview">
+              <i data-lucide="message-circle"></i>
+              <strong>Automações</strong>
+            </div>
+          </article>
+          <article class="mockup reveal">
+            <div class="mockup-bar"><span></span><span></span><span></span></div>
+            <div class="mockup-screen integration-preview">
+              <i data-lucide="plug-zap"></i>
+              <strong>Integrações</strong>
+            </div>
+          </article>
+          <article class="mockup reveal">
+            <div class="mockup-bar"><span></span><span></span><span></span></div>
+            <div class="mockup-screen ai-preview">
+              <i data-lucide="sparkles"></i>
+              <strong>Assistentes de IA</strong>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Depoimentos</p>
+          <h2>Empresas que encontraram mais ritmo com tecnologia aplicada.</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial reveal">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=180&q=80" alt="Foto de Mariana Alves">
+            <p>"A automação do WhatsApp organizou nosso atendimento e reduziu muito o tempo de resposta."</p>
+            <strong>Mariana Alves</strong>
+            <span>Clínica Essencial</span>
+          </article>
+          <article class="testimonial reveal">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=180&q=80" alt="Foto de Rafael Torres">
+            <p>"O site ficou moderno, rápido e começou a gerar contatos qualificados logo nas primeiras semanas."</p>
+            <strong>Rafael Torres</strong>
+            <span>RT Comércio</span>
+          </article>
+          <article class="testimonial reveal">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=180&q=80" alt="Foto de Camila Rocha">
+            <p>"A Juco conseguiu traduzir nossos processos em uma solução simples de usar e muito eficiente."</p>
+            <strong>Camila Rocha</strong>
+            <span>Mercado Popular</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contato">
+      <div class="cta-bg" aria-hidden="true"></div>
+      <div class="container reveal">
+        <img src="assets/juco-logo.png" alt="Juco Consultoria">
+        <h2>Pronto para modernizar sua empresa?</h2>
+        <p>Descubra como a Juco Consultoria pode ajudar seu negócio a vender mais, automatizar processos e crescer utilizando tecnologia.</p>
+        <a class="btn btn-primary btn-large" href="https://wa.me/5575998828297?text=Ol%C3%A1!%20Vi%20a%20JUCO%20Consultoria%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20sites,%20automa%C3%A7%C3%B5es%20e%20solu%C3%A7%C3%B5es%20para%20empresas" target="_blank" rel="noopener">
+          <i data-lucide="send"></i>
+          Fale Conosco Agora
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="assets/juco-logo.png" alt="Juco Consultoria">
+        <p>Marketing, automação e inteligência artificial para empresas que querem crescer com mais organização e presença digital.</p>
+      </div>
+      <div>
+        <h3>Links rápidos</h3>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#solucoes">Soluções</a>
+      </div>
+      <div>
+        <h3>Serviços</h3>
+        <a href="#servicos">Automação de WhatsApp</a>
+        <a href="#servicos">Criação de Sites</a>
+        <a href="#servicos">Assistentes de IA</a>
+        <a href="#servicos">Marketing Digital</a>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <a href="https://wa.me/5575998828297?text=Ol%C3%A1!%20Vi%20a%20JUCO%20Consultoria%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20sites,%20automa%C3%A7%C3%B5es%20e%20solu%C3%A7%C3%B5es%20para%20empresas" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:contato@jucoconsultoria.com.br">E-mail</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © 2026 Juco Consultoria</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="script.js?v=20260625-3"></script>
+</body>
+</html>
