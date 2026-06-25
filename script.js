@@ -3,6 +3,13 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const revealItems = document.querySelectorAll(".reveal");
 const counters = document.querySelectorAll("[data-count]");
+const brandLogo = document.querySelector("[data-brand-logo]");
+
+brandLogo?.addEventListener("error", () => {
+  if (!brandLogo.src.endsWith("assets/juco-logo.png")) {
+    brandLogo.src = "assets/juco-logo.png";
+  }
+});
 
 if (window.lucide) {
   window.lucide.createIcons();
