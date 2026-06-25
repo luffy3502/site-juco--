@@ -76,8 +76,9 @@ a {
 }
 
 .brand img {
-    width: 320px;
+    width: 180px;
     height: auto;
+    display: block;
     border: 0;
 }
 
