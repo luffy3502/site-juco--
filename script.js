@@ -4,6 +4,7 @@ const nav = document.querySelector("[data-nav]");
 const revealItems = document.querySelectorAll(".reveal");
 const counters = document.querySelectorAll("[data-count]");
 const brandLogo = document.querySelector("[data-brand-logo]");
+let lastScrollY = window.scrollY;
 
 brandLogo?.addEventListener("error", () => {
   if (!brandLogo.src.endsWith("assets/juco-logo.png")) {
@@ -16,7 +17,14 @@ if (window.lucide) {
 }
 
 const syncHeader = () => {
-  header.classList.toggle("is-scrolled", window.scrollY > 20);
+  const currentScrollY = window.scrollY;
+  const isMenuOpen = nav?.classList.contains("is-open");
+  const isScrollingDown = currentScrollY > lastScrollY;
+
+  header.classList.toggle("is-scrolled", currentScrollY > 20);
+  header.classList.toggle("is-hidden", isScrollingDown && currentScrollY > 140 && !isMenuOpen);
+
+  lastScrollY = Math.max(currentScrollY, 0);
 };
 
 window.addEventListener("scroll", syncHeader, { passive: true });
