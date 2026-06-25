@@ -56,6 +56,7 @@ a {
   left: 50%;
   z-index: 50;
   width: min(1180px, calc(100% - 32px));
+  height: 92px;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: 260px 1fr auto;
@@ -76,8 +77,8 @@ a {
 }
 
 .brand img {
-  width: 244px;
-  height: 80px;
+  width: 232px;
+  height: 72px;
   border: 0;
   object-fit: cover;
   object-position: center;
@@ -714,12 +715,13 @@ h1 {
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: 1fr auto;
+    height: 80px;
     padding: 8px 10px 8px 12px;
   }
 
   .brand img {
-    width: 190px;
-    height: 62px;
+    width: 176px;
+    height: 56px;
   }
 
   .nav-toggle {
@@ -839,11 +841,12 @@ h1 {
   .site-header {
     top: 10px;
     width: calc(100% - 20px);
+    height: 72px;
   }
 
   .brand img {
-    width: 164px;
-    height: 54px;
+    width: 150px;
+    height: 48px;
   }
 
   .hero {
