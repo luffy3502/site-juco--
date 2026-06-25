@@ -76,6 +76,10 @@ a {
   background: rgba(8, 8, 10, 0.9);
 }
 
+.site-header.is-hidden {
+  transform: translate(-50%, calc(-100% - 24px));
+}
+
 .brand img {
   width: 232px;
   height: 72px;
