@@ -76,11 +76,9 @@ a {
 }
 
 .brand img {
-  width: 244px;
-  height: 80px;
-  border: 0;
-  object-fit: cover;
-  object-position: center;
+    width: 320px;
+    height: auto;
+    border: 0;
 }
 
 .main-nav {
