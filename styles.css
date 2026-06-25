@@ -58,7 +58,7 @@ a {
   width: min(1180px, calc(100% - 32px));
   transform: translateX(-50%);
   display: grid;
-  grid-template-columns: 210px 1fr auto;
+  grid-template-columns: 260px 1fr auto;
   align-items: center;
   gap: 22px;
   padding: 8px 12px 8px 14px;
@@ -76,9 +76,11 @@ a {
 }
 
 .brand img {
-  width: 196px;
-  height: 64px;
-  object-fit: contain;
+  width: 244px;
+  height: 80px;
+  border: 0;
+  object-fit: cover;
+  object-position: center;
 }
 
 .main-nav {
@@ -716,8 +718,8 @@ h1 {
   }
 
   .brand img {
-    width: 176px;
-    height: 58px;
+    width: 190px;
+    height: 62px;
   }
 
   .nav-toggle {
@@ -840,8 +842,8 @@ h1 {
   }
 
   .brand img {
-    width: 148px;
-    height: 50px;
+    width: 164px;
+    height: 54px;
   }
 
   .hero {
